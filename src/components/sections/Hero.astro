@@ -1,0 +1,179 @@
+---
+---
+
+<section class="hero">
+  <div class="hero-container container">
+    <div class="hero-content">
+      <span class="section-label">Jose Villa</span>
+      <h1>
+        Hello, my<br />
+        name's Jose.<br />
+        I'm a Full Stack<br />
+        Developer.
+      </h1>
+      <p class="hero-description">
+        Lead Full Stack Developer with 2+ years building scalable web apps.
+        I lead teams, manage projects, and craft beautiful digital experiences.
+      </p>
+      <div class="hero-cta">
+        <a href="#projects" class="btn btn-primary">View My Work</a>
+        <a href="#contact" class="btn btn-outline">Contact Me</a>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="image-frame">
+        <div class="image-placeholder">
+          <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+            <circle cx="12" cy="7" r="4"/>
+          </svg>
+          <span>Your Photo</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="scroll-indicator">
+    <span>Scroll</span>
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M12 5v14M5 12l7 7 7-7"/>
+    </svg>
+  </div>
+</section>
+
+<style>
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 6rem 0 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero h1 {
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-description {
+    max-width: 450px;
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  /* Hero Visual */
+  .hero-visual {
+    position: relative;
+    width: 100%;
+    height: 520px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .image-frame {
+    position: relative;
+    width: 380px;
+    height: 380px;
+    border-radius: 63% 37% 54% 46% / 55% 48% 52% 45%;
+    overflow: hidden;
+    animation: morph 8s ease-in-out infinite;
+  }
+
+  @keyframes morph {
+    0%, 100% {
+      border-radius: 63% 37% 54% 46% / 55% 48% 52% 45%;
+    }
+    25% {
+      border-radius: 40% 60% 70% 30% / 40% 40% 60% 50%;
+    }
+    50% {
+      border-radius: 54% 46% 38% 62% / 49% 70% 30% 51%;
+    }
+    75% {
+      border-radius: 46% 54% 50% 50% / 53% 30% 70% 47%;
+    }
+  }
+
+  .image-placeholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #1a1a2e 0%, #2d2d44 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    color: rgba(255,255,255,0.3);
+  }
+
+  .image-placeholder span {
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+
+  .scroll-indicator {
+    position: absolute;
+    bottom: 2rem;
+    left: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .hero-container {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+
+    .hero-visual {
+      height: 400px;
+      order: -1;
+    }
+
+    .image-frame {
+      width: 320px;
+      height: 320px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .hero {
+      padding: 5rem 0 3rem;
+    }
+
+    .hero-visual {
+      height: 320px;
+    }
+
+    .image-frame {
+      width: 280px;
+      height: 280px;
+    }
+  }
+</style>

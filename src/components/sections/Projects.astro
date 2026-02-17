@@ -1,0 +1,178 @@
+---
+import { projects } from '../../data/projects';
+import BentoProjectCard from '../projects/BentoProjectCard.astro';
+import ProjectModal from '../projects/ProjectModal.astro';
+
+// Bento grid layout - simple span-based system
+// tall = row-span-2, wide = col-span-2
+const bentoConfig = [
+  { span: 'tall' },      // RankTitan - tall (col 1, rows 1-2)
+  { span: 'default' },   // ProAxis - default (col 2, row 1)
+  { span: 'tall' },      // Spa Dashboard - tall (col 3, rows 1-2)
+  { span: 'default' },   // Trading Bot - default (col 2, row 2)
+  { span: 'wide' },      // Galaxy Generator - wide (cols 1-2, row 3)
+  { span: 'default' },   // Portal Entry - default (col 3, row 3)
+];
+---
+
+<section id="projects" class="section projects">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">Work</span>
+      <h2>
+        Featured<br />
+        Projects<span class="accent-dot">.</span>
+      </h2>
+      <p class="section-subtitle">
+        A selection of projects I've built, from AI platforms to immersive 3D experiences.
+      </p>
+    </div>
+    <div class="bento-grid">
+      {projects.map((project, index) => {
+        const config = bentoConfig[index];
+        const spanClass = config?.span === 'tall' ? 'row-span-2' : config?.span === 'wide' ? 'col-span-2' : '';
+        return (
+          <div class={`bento-item ${spanClass}`}>
+            <BentoProjectCard
+              project={project}
+              size={config?.span || 'default'}
+            />
+          </div>
+        );
+      })}
+    </div>
+  </div>
+</section>
+
+<ProjectModal projects={projects} />
+
+<style>
+  .projects {
+    background-color: var(--background);
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+
+  /* Wider container for bento grid */
+  .projects .container {
+    max-width: 1200px;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .section-label {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--primary);
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1));
+    padding: 0.5rem 1rem;
+    border-radius: 100px;
+    margin-bottom: 1.5rem;
+  }
+
+  .section-label::before {
+    display: none;
+  }
+
+  .projects h2 {
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+  }
+
+  .accent-dot {
+    color: var(--primary);
+  }
+
+  .section-subtitle {
+    font-size: 1.1rem;
+    color: #666;
+    max-width: 480px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+
+  /* Bento Grid */
+  .bento-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 220px;
+    grid-auto-flow: dense; /* This fills gaps automatically */
+    gap: 1.25rem;
+  }
+
+  .bento-item {
+    min-width: 0;
+    border-radius: 20px;
+    overflow: hidden;
+  }
+
+  /* Span utilities */
+  .row-span-2 {
+    grid-row: span 2;
+  }
+
+  .col-span-2 {
+    grid-column: span 2;
+  }
+
+  /* Cards fill their container */
+  .bento-item :global(.bento-card) {
+    height: 100%;
+    width: 100%;
+  }
+
+  /* Tablet - 2 columns */
+  @media (max-width: 968px) {
+    .bento-grid {
+      grid-template-columns: repeat(2, 1fr);
+      grid-auto-rows: 200px;
+    }
+
+    /* On tablet, wide cards still span 2, but we need to handle the layout */
+    .col-span-2 {
+      grid-column: span 2;
+    }
+  }
+
+  /* Mobile - 1 column */
+  @media (max-width: 640px) {
+    .projects {
+      padding-top: 4rem;
+      padding-bottom: 4rem;
+    }
+
+    .section-header {
+      margin-bottom: 2.5rem;
+    }
+
+    .bento-grid {
+      grid-template-columns: 1fr;
+      grid-auto-rows: auto;
+      gap: 1rem;
+    }
+
+    /* Reset spans on mobile */
+    .row-span-2,
+    .col-span-2 {
+      grid-row: span 1;
+      grid-column: span 1;
+    }
+
+    .bento-item :global(.bento-card) {
+      min-height: 300px;
+    }
+
+    .section-subtitle {
+      font-size: 0.95rem;
+    }
+  }
+</style>

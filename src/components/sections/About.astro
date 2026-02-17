@@ -1,0 +1,104 @@
+---
+---
+
+<section id="about" class="section about">
+  <div class="container">
+    <span class="section-label">About</span>
+    <div class="about-content">
+      <h2>
+        I Build Digital<br />
+        Products That<br />
+        Matter.
+      </h2>
+      <div class="about-text">
+        <p>
+          I'm a Lead Full Stack Developer passionate about creating impactful
+          digital solutions. With expertise spanning frontend to backend,
+          I bring ideas to life while leading teams and managing projects
+          from concept to deployment.
+        </p>
+        <p>
+          My focus is on clean code, intuitive UI/UX, and delivering
+          real business value through technology.
+        </p>
+      </div>
+    </div>
+    <div class="stats">
+      <div class="stat">
+        <span class="stat-number">2+</span>
+        <span class="stat-label">Years Experience</span>
+      </div>
+      <div class="stat">
+        <span class="stat-number">15+</span>
+        <span class="stat-label">Projects Done</span>
+      </div>
+      <div class="stat">
+        <span class="stat-number">5+</span>
+        <span class="stat-label">Team Members Led</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about {
+    background-color: var(--background);
+  }
+
+  .about-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    margin-bottom: 4rem;
+  }
+
+  .about-content h2 {
+    margin: 0;
+  }
+
+  .about-text p {
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+  }
+
+  .stats {
+    display: flex;
+    gap: 4rem;
+    padding-top: 3rem;
+    border-top: 1px solid rgba(0,0,0,0.1);
+  }
+
+  .stat-number {
+    display: block;
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: var(--primary);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  .stat-label {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+
+  @media (max-width: 968px) {
+    .about-content {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .stats {
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .stats {
+      flex-direction: column;
+      gap: 2rem;
+    }
+  }
+</style>
